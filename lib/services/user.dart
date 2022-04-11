@@ -1,8 +1,6 @@
 import '../model/user.dart';
 
 class UserService {
-  late User user;
-
   Future<User> getUser(){
     Map<String, dynamic> userData = {
       'id': 1,
@@ -13,9 +11,6 @@ class UserService {
       'balance': '99000',
     };
     
-    return Future.delayed(const Duration(seconds: 3), () {
-      user = User.fromMap(userData);
-      return User.fromMap(userData);
-    });
+    return Future.delayed(const Duration(seconds: 3), () => User.fromMap(userData));
   }
 }

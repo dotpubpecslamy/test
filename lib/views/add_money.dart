@@ -19,7 +19,7 @@ class _AddMoneyState extends State<AddMoney> {
   final TextStyle txtStyle = const TextStyle(fontSize: 20, fontWeight:FontWeight.bold);
 
   void _cashIn() {
-    context.read<DashboardBloc>().add(CashInEvent(double.parse(_amt), RepositoryProvider.of<UserService>(context).user));
+    context.read<DashboardBloc>().add(CashInEvent(double.parse(_amt)));
   }
 
   InkWell _buildNumbers(int i){

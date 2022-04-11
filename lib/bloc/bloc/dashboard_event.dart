@@ -14,12 +14,11 @@ class FetchUserEvent extends DashboardEvent {
 
 class CashInEvent extends DashboardEvent {
   final double amt;
-  final User user;
 
-  const CashInEvent(this.amt, this.user);
+  const CashInEvent(this.amt);
 
   @override
-  List<Object> get props => [amt, user];
+  List<Object> get props => [amt];
 }
 
 

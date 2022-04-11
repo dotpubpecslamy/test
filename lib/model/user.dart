@@ -27,6 +27,7 @@ class User {
       'balance': balance,
     };
   }
+  
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       id: map['id'],
@@ -40,4 +41,22 @@ class User {
 
   String toJson() => json.encode(toMap());
   factory User.fromJson(String source) => User.fromMap(json.decode(source));
+
+  User copyWith({
+    int? id,
+    String? name,
+    String? email,
+    String? brandName,
+    String? rewardPoints,
+    String? balance,
+  }) {
+    return User(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      brandName: brandName ?? this.brandName,
+      rewardPoints: rewardPoints ?? this.rewardPoints,
+      balance: balance ?? this.balance,
+    );
+  }
 }

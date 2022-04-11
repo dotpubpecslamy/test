@@ -19,18 +19,26 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     });
 
     on<CashInEvent>((event, emit) async {
-      emit(DashboardLoadingState());
-      double newBalance = event.amt + double.parse(event.user.balance);
-      double newPoints = (event.amt * .10) + double.parse(event.user.rewardPoints);
+      final state = this.state as DashBoardLoadedState;
+      
+      double newBalance = event.amt + double.parse(state.user.balance);
+      double newPoints = (event.amt * .10) + double.parse(state.user.rewardPoints);
       // print('newBalance $newBalance');
       // print('newBalance $newPoints');
 
-      event.user.rewardPoints = newPoints.toString();
-      event.user.balance = newBalance.toString();
-      print(event.user.balance);
-      print(event.user.rewardPoints);
+      // event.user.rewardPoints = newPoints.toString();
+      // event.user.balance = newBalance.toString();
+      // print(event.user.balance);
+      // print(event.user.rewardPoints);
 
-      emit(DashBoardLoadedState(event.user));
+      emit(
+        DashBoardLoadedState(
+          state.user.copyWith(
+            balance: newBalance.toString(),
+            rewardPoints: newPoints.toString()
+          )
+        )
+      );
     });
   }
 }
